@@ -1,21 +1,18 @@
 import os
 import google.generativeai as genai
-import fitz  # PyMuPDF for PDFs
+import fitz
 import docx
 from flask import Flask, request, render_template, jsonify
 
 app = Flask(__name__)
 
-# Ensure upload folder exists
 UPLOAD_FOLDER = "uploads"
 os.makedirs(UPLOAD_FOLDER, exist_ok=True)
 app.config["UPLOAD_FOLDER"] = UPLOAD_FOLDER
 
-# Gemini API Key (Replace with your actual API key)
 GEMINI_API_KEY = "AIzaSyDBci_RB2v280LRYqulLVKoZdj2Upg0qz4"
 genai.configure(api_key=GEMINI_API_KEY)
 
-# Function: Extract text from PDF
 def extract_text_from_pdf(pdf_path):
     text = ""
     try:
@@ -26,7 +23,6 @@ def extract_text_from_pdf(pdf_path):
         print(f"🔴 Error reading PDF: {str(e)}")
     return text.strip()
 
-# Function: Extract text from DOCX
 def extract_text_from_docx(docx_path):
     try:
         doc = docx.Document(docx_path)
