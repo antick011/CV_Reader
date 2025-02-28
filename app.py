@@ -10,7 +10,7 @@ UPLOAD_FOLDER = "uploads"
 os.makedirs(UPLOAD_FOLDER, exist_ok=True)
 app.config["UPLOAD_FOLDER"] = UPLOAD_FOLDER
 
-GEMINI_API_KEY = "AIzaSyDBci_RB2v280LRYqulLVKoZdj2Upg0qz4"
+GEMINI_API_KEY = "YOUR_API_KEY"
 genai.configure(api_key=GEMINI_API_KEY)
 
 def extract_text_from_pdf(pdf_path):
